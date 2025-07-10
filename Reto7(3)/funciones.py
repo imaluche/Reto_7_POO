@@ -81,6 +81,9 @@ class Manager:
       self.empleados = empleados
    def cobro(self,valor):
       self.balance = self.balance - valor
+      if self.balance < 0:
+         print(f"te quedaste en negativo y el negocio quebro :c")
+         exit()
    def ver_menu(self):
       print("Menu de tu restaurante:")
       for i in self.menu:
@@ -133,7 +136,7 @@ class Manager:
          nombre = input(f"¿como se llama tu empleado?")
          cobro = random.randint(0,100000)
          print(f"despues de negociar inicialmente {nombre} acepto un pago de {cobro}")
-         self.balance = self.balance - cobro
+         self.cobro(cobro)
          if tipo == "mesero":
             mes = mesero(nombre)
          elif tipo == "cajero":
