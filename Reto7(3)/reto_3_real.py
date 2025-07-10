@@ -4,19 +4,21 @@ if __name__ == "__main__":
    print("bienvenido a tu futuro restaurante")
    ceo = Manager(input("ingresa tu nombre: "), float(input("ingresa el capital inicial para el negocio (es recomendable tener al menos 600000)")))
    print("este es su menu")
+   # se muestar un menu por defecto
    print(ceo.ver_menu())
    if (input("¿desea añadir mas productos? (si/no): ")) == "si":
       nu = float(input("¿cuantos productos desea añadir?: "))
+      #añadir productos tiene su respectivo costo
       ceo.añadir_productos(nu)
    final_menu = ceo.menu
    print("ahora es necesario contratar empleados")
-   ceo.contratar()
+   ceo.contratar() #contratar empleados cuesta dinero, para que funcion es necesario al menos tener un mesero y un cajero 
    trabajadores = ceo.empleados
    print("tus trabajadores son: ")
    for i in trabajadores:
       print(i)
    print("ahora empezemos a trabajar")
-   comensales = random.randint(1,10)
+   comensales = random.randint(1,10) #una cantidad aleatoria de comensales para cada mesero
    flag = 0
    ordenes_tomadas = []
    medios_de_pago = []
@@ -30,9 +32,11 @@ if __name__ == "__main__":
                   medio_comensal_random = Tarjeta(random.randint(10000, 1000000), random.randbytes(7))
                print(f"comensal {flag + 1}")
                i.añadir_orden(final_menu[0],final_menu[1],final_menu[2],final_menu[3],final_menu[4])
+               #las ordenes añadidas seran almacenadas en una cola
                flag = flag +1
                ordenes_tomadas.append(i)
                medios_de_pago.append(medio_comensal_random)
+               #las colas seran añadidas a una lista
          if isinstance(i, cajero):
             cont = 0
             if ordenes_tomadas == []:
@@ -40,21 +44,8 @@ if __name__ == "__main__":
                trabajadores.append(i)
                pass  
             else:
+               # el cajero ira encargandose de las ordenes y realizando el cobro respectivo
                for j in ordenes_tomadas: 
                   ganacia = i.cuentas(j,medios_de_pago[cont])
                   cont=cont +1 
                   ceo.balance = ceo.balance + ganacia
-
-   #print(jsonmenu["ensaladas"][0])
-   #listadef = convertidor(lectura_menu)
- 
-   #menu = producto("menu", 0)
-   #tarjeta = Tarjeta(100000000, "1234-87345", "2504")
-   #billetera = Efectivo(50000)
-   #mesero1= mesero("Juan", Queue())
-   #mesero1.añadir_orden(listadef[0], listadef[1], listadef[2], listadef[3], listadef[4])
-   #cajero1= cajero("carlos")
-   #cajero1.cuentas(mesero1, tarjeta)
-   #cuenta1.total()
-   #dueño = Manager(input("ingresa tu nombre"),0)
-   #dueño.ver_menu(listadef)
