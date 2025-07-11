@@ -2,7 +2,7 @@
 
 
 ----------------------------------
-### Ejercicio: Cree la clase Linea y redefina la clase rectangulo a partir de 2 lineas
+### Ejercicio: Añada estructuras vistas en el reto 7 al codigo (archivos json actualizables, colas FIFO, etc)
 ```python
 import json
 from funciones import *        
